@@ -15,6 +15,7 @@ body {
 
 #topbannertitle {
     width: 50%;
+    height: 100%;
     background-color: cyan;
     float: left;
 }
@@ -22,6 +23,7 @@ body {
 #topcenteredmenu {
 	float: left;
 	width: 50%;
+    height: 50%;
 	overflow: hidden;
 	position: relative;
 }
@@ -36,7 +38,6 @@ body {
 	left: 50%;
 	text-align: center;
 }
-
 #topcenteredmenu ul li {
 	display: block;
 	float: left;
@@ -46,7 +47,6 @@ body {
 	position: relative;
 	right: 50%
 }
-
 #topcenteredmenu ul li a {
 	display: block;
 	margin: 0 0 0 1px;
@@ -55,7 +55,6 @@ body {
 	text-decoration: none;
 	line-height: 21px;
 }
-
 #topcenteredmenu ul li a:hover {
 	background: #369;
 	color: #fff;
@@ -66,6 +65,17 @@ body {
 	background: black;
 	font-weight: bold;
 }
+
+#loginandregistraion {
+    width: 50%;
+    height: 50%;
+    background-color: cyan;
+    float: left;
+    text-align: center;
+}
+
+
+
 
 /* Below is the CSS for the bottombanner */
 #bottombanner {
@@ -99,7 +109,6 @@ body {
 	left: 50%;
 	text-align: center;
 }
-
 #botcenteredmenu ul li {
 	display: block;
 	float: left;
@@ -109,7 +118,6 @@ body {
 	position: relative;
 	right: 50%
 }
-
 #botcenteredmenu ul li a {
 	display: block;
 	margin: 0 0 0 1px;
@@ -118,7 +126,6 @@ body {
 	text-decoration: none;
 	line-height: 21px;
 }
-
 #botcenteredmenu ul li a:hover {
 	background: #369;
 	color: #fff;
@@ -130,11 +137,12 @@ body {
 	font-weight: bold;
 }
 
+
 /*Below is the CSS for the content section */
 #content {
-    height: 500px;
     width: 100%;
     background-color: grey;
+    min-height: 500px;
 }
 
 #leftcolumn{
