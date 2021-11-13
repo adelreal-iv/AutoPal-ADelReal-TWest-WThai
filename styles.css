@@ -7,7 +7,7 @@ body {
 
 /* Below is the CSS for the topbanner */
 #topbanner {
-    height: 100px;
+    height: 150px;
     width: 100%;
     background-color: cyan;
     float: left;
@@ -20,12 +20,16 @@ body {
     float: left;
 }
 
+h1 {
+    text-align: center;
+}
+
 #topcenteredmenu {
 	float: left;
 	width: 50%;
-    height: 50%;
 	overflow: hidden;
 	position: relative;
+    padding-top: 30px;
 }
 
 #topcenteredmenu ul {
@@ -68,10 +72,10 @@ body {
 
 #loginandregistraion {
     width: 50%;
-    height: 50%;
     background-color: cyan;
     float: left;
     text-align: center;
+    margin-top: 10px;
 }
 
 
