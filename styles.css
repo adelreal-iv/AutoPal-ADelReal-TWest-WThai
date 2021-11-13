@@ -16,6 +16,7 @@ body {
 #topbannertitle {
     width: 50%;
     height: 100%;
+	margin-top: 40px;
     background-color: cyan;
     float: left;
 }
