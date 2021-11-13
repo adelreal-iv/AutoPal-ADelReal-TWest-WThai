@@ -169,4 +169,23 @@ body {
     min-height: 500px;
 }
 
+#weatherAPI {
+    height: 100px;
+    width: 75%;
+    background-color: white;
+    margin: 10px auto 10px auto;
+}
 
+#newsAPI {
+    height: 200px;
+    width: 75%;
+    background-color: white;
+    margin: 10px auto 10px auto;
+}
+
+#googlesearch {
+    height: 100px;
+    width: 75%;
+    background-color: white;
+    margin: 10px auto 10px auto;
+}
