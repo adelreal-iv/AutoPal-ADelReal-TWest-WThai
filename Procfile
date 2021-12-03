@@ -1,1 +1,1 @@
-web: gunicorn autopal:autopal
+web: gunicorn autopal:app
