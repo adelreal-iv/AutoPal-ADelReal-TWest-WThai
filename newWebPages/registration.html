@@ -1,0 +1,89 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <!-- change title for each page!-->
+  <title>AutoPal Register</title>
+  <meta name="description" content="San Francisco 101 - Home">
+  <meta name="author" content="Weston">
+
+  <link rel= "stylesheet" type= "text/css" href= "indexstyle.css">
+ <!--Weston Thai, Thomas West-->
+
+</head>
+
+<body>
+	<!--div for top banner-->
+	<div id="topbanner">
+		<div id="topbannertitle">
+			<h1 class="title">AutoPal Financial</h1>
+		</div>
+		<div id="topcenteredmenu">
+			<ul>
+				<li><a href="./index.html">Home</a></li>
+				<li><a class="active" href="./registration.html">Register</a></li>
+				<li><a href="./login.html">Login</a></li>
+				<li><a href="./calculator.html">Calculator</a></li>
+			</ul>	
+		</div>
+	</div>
+	<!--div for content-->
+	<div id="content">
+		<div id="leftcolumn">
+				<div id="weatherAPI">
+					weather API
+				</div>
+				<div id="googlesearch">
+					google search
+				</div>
+		</div>
+		<div id="middlecolumn">
+			<div class="contentTitle">
+				<p>Fill out the form below to sign up!</p>
+			</div>
+			<div id="registration">
+			<!--maybe use flask based login system instead of this? need to research if applicable-->
+				<form name="form" action="" method="post">
+
+					<label for="firstname">First Name:</label><br>
+					<input type="firstname" id="firstname" name="firstname" required><br><br>
+					
+					<label for="lastname">Last Name:</label><br>
+					<input type="lastname" id="lastname" name="lastname" required><br><br>
+
+					<label for="email">Email:</label><br>
+					<input type="email" id="email" name="email" required><br><br>
+
+					<label for="username">Username:</label><br>
+					<input type="text" id="username" name="username" required><br><br>
+					
+					<label for="password">Password:</label><br>
+					<input type="password" id="password" name="password" required><br><br>
+	  
+					<input class="submit" type="submit" value="Submit">
+				  </form>
+			</div>	
+		</div>
+		<div id="rightcolumn">
+			<div id="newsAPI">
+				news API	
+			</div>
+		</div>	
+	</div>
+
+	<!-- div for bottom banner-->
+	<div id="bottombanner">
+		<div id="bottombannertitle">
+			<h2 class="title">AutoPal Financial</h1>
+		</div>
+		<div id="botcenteredmenu">
+			<ul>
+				<li><a href="./index.html">Home</a></li>
+				<li><a class="active" href="./registration.html">Register</a></li>
+				<li><a href="./login.html">Login</a></li>
+				<li><a href="./calculator.html">Calculator</a></li>
+			</ul>	
+		</div>
+	</div>
+ </body>
+</html>
