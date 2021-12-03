@@ -19,7 +19,7 @@ def calculator():
 
 #dont worry about this for now
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
 
 
 #this is a test
