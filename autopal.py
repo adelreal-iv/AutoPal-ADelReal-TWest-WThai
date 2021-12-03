@@ -5,13 +5,17 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route("/home")
-def home():                     #Note to self, be careful not to duplicate function names
-    return render_template('home.html')
+@app.route("/login")
+def login():                     #Note to self, be careful not to duplicate function names
+    return render_template('login.html')
 
-@app.route("/about")
-def about():
-    return render_template('about.html')
+@app.route("/registration")
+def registration():
+    return render_template('registration.html')
+
+@app.route("/calculator")
+def calculator():
+    return render_template('calculator.html')
 
 #dont worry about this for now
 if __name__ == '__main__':

@@ -3,11 +3,11 @@
   <meta charset="utf-8">
 
   <!-- change title for each page!-->
-  <title>AutoPal Login</title>
+  <title>AutoPal Register</title>
   <meta name="description" content="San Francisco 101 - Home">
   <meta name="author" content="Weston">
 
-  <link rel= "stylesheet" type= "text/css" href= "indexstyle.css">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/indexstyle.css') }}">
  <!--Weston Thai, Thomas West-->
 
 </head>
@@ -20,10 +20,10 @@
 		</div>
 		<div id="topcenteredmenu">
 			<ul>
-				<li><a href="./index.html">Home</a></li>
-				<li><a href="./registration.html">Register</a></li>
-				<li><a class="active" href="./login.html">Login</a></li>
-				<li><a href="./calculator.html">Calculator</a></li>
+				<li><a href="./">Home</a></li>
+				<li><a class="active" href="./registration">Register</a></li>
+				<li><a href="./login">Login</a></li>
+				<li><a href="./calculator">Calculator</a></li>
 			</ul>	
 		</div>
 	</div>
@@ -39,11 +39,21 @@
 		</div>
 		<div id="middlecolumn">
 			<div class="contentTitle">
-				<p>Login below!</p>
+				<p>Fill out the form below to sign up!</p>
 			</div>
 			<div id="registration">
 			<!--maybe use flask based login system instead of this? need to research if applicable-->
 				<form name="form" action="" method="post">
+
+					<label for="firstname">First Name:</label><br>
+					<input type="firstname" id="firstname" name="firstname" required><br><br>
+					
+					<label for="lastname">Last Name:</label><br>
+					<input type="lastname" id="lastname" name="lastname" required><br><br>
+
+					<label for="email">Email:</label><br>
+					<input type="email" id="email" name="email" required><br><br>
+
 					<label for="username">Username:</label><br>
 					<input type="text" id="username" name="username" required><br><br>
 					
@@ -68,10 +78,10 @@
 		</div>
 		<div id="botcenteredmenu">
 			<ul>
-				<li><a href="./index.html">Home</a></li>
-				<li><a href="./registration.html">Register</a></li>
-				<li><a class="active" href="./login.html">Login</a></li>
-				<li><a href="./calculator.html">Calculator</a></li>
+				<li><a href="./">Home</a></li>
+				<li><a class="active" href="./registration">Register</a></li>
+				<li><a href="./login">Login</a></li>
+				<li><a href="./calculator">Calculator</a></li>
 			</ul>	
 		</div>
 	</div>

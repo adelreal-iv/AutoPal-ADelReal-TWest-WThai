@@ -3,26 +3,33 @@ body {
     padding: 0;
     border: 0;
     outline: 0;
+	font-family: Helvetica;
+	background-color: rgb(220, 220, 220);
 }
 
 /* Below is the CSS for the topbanner */
 #topbanner {
     height: 150px;
     width: 100%;
-    background-color: cyan;
+    background-color: rgb(220, 220, 220);
+	background-image: linear-gradient(rgb(245, 245, 245),rgb(210, 235, 240));
     float: left;
+	border-bottom: 4px inset;
 }
 
 #topbannertitle {
     width: 50%;
     height: 100%;
-    background-color: cyan;
     float: left;
 }
 
 h1 {
     text-align: center;
     margin-top: 50px;
+}
+
+.title {
+	font-family: Tempus Sans ITC;
 }
 
 #topcenteredmenu {
@@ -73,7 +80,6 @@ h1 {
 
 #loginandregistraion {
     width: 50%;
-    background-color: cyan;
     float: left;
     text-align: center;
     margin-top: 10px;
@@ -86,13 +92,14 @@ h1 {
 #bottombanner {
     height: 100px;
     width: 100%;
-    background-color: cyan;
+    background-color: rgb(220, 220, 220);
+	background-image: linear-gradient(rgb(210, 235, 240), rgb(245, 245, 245));
     float: left;
+	border-top: 4px outset;
 }
 
 #bottombannertitle {
     width: 50%;
-    background-color: cyan;
     float: left;
 }
 
@@ -107,6 +114,7 @@ h2 {
 	overflow: hidden;
 	position: relative;
 	bottom: 0;
+	padding-top: 30px;
 }
 
 #botcenteredmenu ul {
@@ -152,31 +160,35 @@ h2 {
 #content {
     width: 100%;
     background-color: grey;
-    min-height: 500px;
+    min-height: 700px;
 }
 
 #leftcolumn{
     float: left;
     height: auto;
     width: 25%;
-    background-color: lightblue;
-    min-height: 500px;
+    background-color: rgb(235, 235, 240);
+    min-height: 700px;
+	border-right: 4px inset;
+	box-sizing: border-box;
 }
 
 #middlecolumn{
     float: left;
     height: auto;
     width: 50%;
-    background-color: lightcoral;
-    min-height: 500px;
+    background-color: rgb(245, 245, 245);
+    min-height: 700px;
 }
 
 #rightcolumn{
     float: left;
     height: auto;
     width: 25%;
-    background-color: lightgreen;
-    min-height: 500px;
+    background-color: rgb(235, 235, 240);
+    min-height: 700px;
+	border-left: 4px outset;
+	box-sizing: border-box;
 }
 
 #weatherAPI {
@@ -198,4 +210,51 @@ h2 {
     width: 75%;
     background-color: white;
     margin: 10px auto 10px auto;
+}
+
+#calcAPP {
+    height: 200px;
+    width: 75%;
+    background-color: white;
+    margin: 10px auto 10px auto;
+}
+
+input {
+    border: 1.5px solid;
+    border-radius: 5px;
+    padding: 2px;
+    width: 60%;
+    margin: 5px;
+	text-align: center;
+}
+.submit {
+	border: 1.5px solid;
+    border-radius: 5px;
+    padding: 2px;
+    width: 30%;
+    margin: 10px;
+	text-align: center;
+}
+
+form {
+	text-align: center;
+	font-size: small;
+	border: 5px ridge;
+	border-radius: 5px;
+	padding-top: 10px;
+}
+
+#registration {
+	margin: 5% 25% 10% 25%;
+}
+
+.contentTitle {
+	margin-top: 50px;
+	text-align: center;
+	font-weight: bold;
+}
+
+#hometext {
+	margin: 50px 30px 30px 30px;
+
 }
