@@ -1,25 +1,25 @@
 from flask import Flask, render_template, url_for, flash, redirect
 from forms import RegistrationForm, LoginForm
+from flask_sqlalchemy import SQLAlchemy  #for database
+
 app = Flask(__name__, static_url_path='/static')
 
 app.config['SECRET_KEY'] = 'f453ce6c9f307342c7e1fe6857315d4f'
 
-posts = [
-    {
-        'author': 'me',
-        'title': 'the title',
-        'content': 'example content',
-        'date_posted': '02/2/2020'
-    },
-    {
-        'author': 'me2',
-        'title': 'the title2',
-        'content': 'example content2',
-        'date_posted': '02/2/2020  2 TEST'
-        
-    }
 
-]
+#next section is for database
+app.config['SQLAlchemy_DATABASE_URI'] = 'sql:///site.db'  
+db = SQLAlchemy(app) 
+
+class User(db.Model):
+    id=db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True)
+    password = db.Column(db.String(60), nullable=False)
+
+    def __repr__(self):
+        return f"User('{self.username}', '{self.email}')"
+#end of section for database
 
 @app.route('/') 
 def index():
