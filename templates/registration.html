@@ -4,11 +4,11 @@
 
   <!-- change title for each page!-->
   <title>AutoPal Register</title>
-  <meta name="description" content="San Francisco 101 - Home">
-  <meta name="author" content="Weston">
+  
 
   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/indexstyle.css') }}">
- <!--Weston Thai, Thomas West-->
+	
+
 
 </head>
 
@@ -40,29 +40,75 @@
 		</div>
 		<div id="middlecolumn">
 			<div class="contentTitle">
-				<p>Fill out the form below to sign up!</p>
+				<p>Registration</p>
 			</div>
 			<div id="registration">
 			<!--maybe use flask based login system instead of this? need to research if applicable-->
 				<form name="form" action="" method="post">
-
-					<label for="firstname">First Name:</label><br>
-					<input type="firstname" id="firstname" name="firstname" required><br><br>
+					{{  form.hidden_tag()  }}
 					
-					<label for="lastname">Last Name:</label><br>
-					<input type="lastname" id="lastname" name="lastname" required><br><br>
-
-					<label for="email">Email:</label><br>
-					<input type="email" id="email" name="email" required><br><br>
-
-					<label for="username">Username:</label><br>
-					<input type="text" id="username" name="username" required><br><br>
+					{{  form.email.label  }}<br>
 					
-					<label for="password">Password:</label><br>
-					<input type="password" id="password" name="password" required><br><br>
+					{% if form.email.errors %} 
+						{{  form.email  }}<br>
+						<div class="isa_error">
+							{% for error in form.email.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        {{ form.email }}<br><br>
+                    {% endif %}
+
+
+					{{  form.username.label  }}<br>
+					
+					{% if form.username.errors %} 
+						{{  form.username  }}<br>
+						<div class="isa_error">
+							{% for error in form.username.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        {{ form.username }}<br><br>
+                    {% endif %}
+					
+
+					{{  form.password.label  }}<br>
+					
+					{% if form.password.errors %} 
+						{{  form.password  }}<br>
+						<div class="isa_error">
+							{% for error in form.password.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        {{ form.password }}<br><br>
+                    {% endif %}
+
+
+					{{  form.confirm_password.label  }}<br>
+					
+					{% if form.confirm_password.errors %} 
+						{{  form.confirm_password  }}<br>
+						<div class="isa_error">
+							{% for error in form.confirm_password.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        {{ form.confirm_password }}<br><br>
+                    {% endif %}
+
 	  
-					<input class="submit" type="submit" value="Submit">
-				  </form>
+					{{ form.submit(class="submit") }}<br>
+
+					<small class="grayout">
+						Already Have An Account? <a href="{{ url_for('login') }}">Sign In</a>
+					</small>
+				</form>
 			</div>	
 		</div>
 		<div id="rightcolumn">

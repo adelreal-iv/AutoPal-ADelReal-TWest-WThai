@@ -39,6 +39,17 @@
 				</div>
 		</div>
 		<div id="middlecolumn">
+			<div class="contentTitleFlash">
+				{% with messages = get_flashed_messages(with_categories=true) %}
+					{% if messages %}
+				  		{% for category, message in messages %}
+							<div class="{{ category }}">
+					  			{{ message }}
+							</div>
+				  		{% endfor %}
+					{% endif %}
+			  	{% endwith %}
+			</div>
 			<div class="contentTitle">
 				<p>Welcome to AutoPal Financial!</p>
 			</div>
