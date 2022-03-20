@@ -27,7 +27,7 @@ def index():
 
 @app.route('/test') 
 def test():
-    return render_template('test.html', posts=posts)    
+    return render_template('test.html')    
 
 @app.route("/registration", methods=['GET', 'POST'])
 def register():
