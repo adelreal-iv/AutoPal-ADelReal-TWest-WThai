@@ -1,6 +1,8 @@
+from xml.dom import ValidationErr
 from flask_wtf import FlaskForm                                                #Forms library
 from wtforms import StringField, PasswordField, SubmitField, BooleanField      #Included with wtf forms
-from wtforms.validators import DataRequired, Length, Email, EqualTo            #Input validation
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError           #Input validation
+from autopal.models import user        
 
 class RegistrationForm(FlaskForm):
         username = StringField('Username', 
@@ -12,6 +14,17 @@ class RegistrationForm(FlaskForm):
         confirm_password = PasswordField('Confirm Password', 
                                 validators=[DataRequired(), EqualTo('password')])
         submit = SubmitField('Sign Up')
+
+
+        def validate_username(self, username):
+                newuser = user.query.filter_by(username=username.data).first()
+                if newuser:
+                        raise ValidationError('That username is taken please choose a differnet one.')          #validates if username is taken already in the database
+
+        def validate_email(self, email):
+                newemail = user.query.filter_by(email=email.data).first()
+                if newemail:
+                        raise ValidationError('That email is taken please choose a differnet one.')          #validates if email is taken already in the database
 
 class LoginForm(FlaskForm):
         email = StringField('Email',                                                    #Validates email for signing in as opposed to username
