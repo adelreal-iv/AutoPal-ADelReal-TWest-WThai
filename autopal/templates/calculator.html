@@ -40,7 +40,77 @@
 		</div>
 		<div id="middlecolumn">
 			<div id="calcAPP">
-				calculator app	
+				<div class="contentTitle">
+				<p>Loan Calculator</p>
+				</div>
+				<form name="form" action="" method="post">
+					{{  form.hidden_tag()  }}
+					
+					{{  form.loan_amount.label  }}<br>
+					
+					{% if form.loan_amount.errors %} 
+						{{  form.loan_amount  }}<br>
+						<div class="isa_error">
+							{% for error in form.loan_amount.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        {{ form.loan_amount }}<br><br>
+                    {% endif %}
+
+					{{  form.interest.label  }}<br>
+					
+					{% if form.interest.errors %} 
+						{{  form.interest  }}<br>
+						<div class="isa_error">
+							{% for error in form.interest.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        {{ form.interest }}<br><br>
+                    {% endif %}
+
+					{{  form.months.label  }}<br>
+
+					{% if form.months.errors %} 
+						{{  form.months  }}<br>
+						<div class="isa_error">
+							{% for error in form.months.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        {{ form.months }}<br><br>
+                    {% endif %}
+
+					{{  form.city.label  }}<br>
+
+					{% if form.city.errors %} 
+						{{  form.city  }}<br>
+						<div class="isa_error">
+							{% for error in form.city.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        {{ form.city }}<br><br>
+                    {% endif %}
+					
+	  
+					{{ form.submit(class="submit") }}<br><br>
+					<b>Amortization Summary</b>
+					<p>Base Price: ${{ "{:,.2f}".format(base_price) }}</p>
+					<p>Tax Rate ({{ city }}): {{ tax_rate }}%</p>
+					<p>Total Price and Finance Amount: ${{ "{:,.2f}".format(total_price) }}</p>
+					<p>Number of Payments: {{ total_payments }}</p>
+					<p>Monthly Payments: ${{ "{:,.2f}".format(monthly_payment) }}</p>
+					<p>Final Payment: ${{ "{:,.2f}".format(last_payment) }}</p>
+					<p>Finance Charge: ${{ "{:,.2f}".format(interest_charge) }}</p>
+					<p>Final Amount Paid: ${{ "{:,.2f}".format(final_amount) }}</p>
+					
+				</form>	
 			</div>
 		</div>
 		<div id="rightcolumn">

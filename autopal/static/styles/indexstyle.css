@@ -175,7 +175,7 @@ h2 {
     height: auto;
     width: 25%;
     background-color: rgb(235, 235, 240);
-    min-height: 700px;
+    min-height: 750px;
 	border-right: 4px inset;
 	box-sizing: border-box;
 }
@@ -185,7 +185,7 @@ h2 {
     height: auto;
     width: 50%;
     background-color: rgb(245, 245, 245);
-    min-height: 700px;
+    min-height: 750px;
 }
 
 #rightcolumn{
@@ -193,7 +193,7 @@ h2 {
     height: auto;
     width: 25%;
     background-color: rgb(235, 235, 240);
-    min-height: 700px;
+    min-height: 750px;
 	border-left: 4px outset;
 	box-sizing: border-box;
 }
@@ -222,7 +222,6 @@ h2 {
 #calcAPP {
     height: 200px;
     width: 75%;
-    background-color: white;
     margin: 10px auto 10px auto;
 }
 
