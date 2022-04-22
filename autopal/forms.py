@@ -41,8 +41,8 @@ class CalculateForm(FlaskForm):
                                 validators=[DataRequired()])
         months = IntegerField('Loan Term in Months:', 
                                 validators=[DataRequired()])
-        city = StringField('City of Residence (California):',
-                                validators=[DataRequired()])                                
+        city = StringField('City of Residence Tax Rate (State of CA):',
+                                validators=[DataRequired()], render_kw={"placeholder": "Ex: Los Angeles"})                                
         submit = SubmitField('Calculate')
         
 

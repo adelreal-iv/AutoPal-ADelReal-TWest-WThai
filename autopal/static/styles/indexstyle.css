@@ -348,3 +348,20 @@ form {
     width: 250px;
     text-align: left;
 }
+
+.dti_text{
+	display: inline-block;
+    clear: left;
+    width: 400px;
+    text-align: left;
+}
+
+.tier1{
+	color:#108a47
+}
+.tier2{
+	color:#ad9300
+}
+.tier3{
+	color:#e00f0f
+}

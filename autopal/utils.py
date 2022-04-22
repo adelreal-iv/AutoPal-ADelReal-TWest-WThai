@@ -142,14 +142,15 @@ def BudgetAssistant(monthly_income,monthly_debt):
     dti = 0 
     dti_tier = 0   
     dti_range = [35.99, 49.99]
+    tier_text = " "
 
     monthly_income = round(float(monthly_income),2)
     monthly_debt = round(float(monthly_debt), 2)
     
     if monthly_income != 0 or monthly_debt != 0:
-        dti_tier, dti = (calculate_dti(monthly_income, monthly_debt, dti_range))
+        dti_tier, dti, tier_text = (calculate_dti(monthly_income, monthly_debt, dti_range))
 
-    return dti, dti_tier
+    return dti, dti_tier, tier_text
 
 
 def calculate_dti(monthly_income, monthly_debt, dti_range):
@@ -158,10 +159,16 @@ def calculate_dti(monthly_income, monthly_debt, dti_range):
     dti = monthly_debt / monthly_income
     dti = dti * 100
     dti = round(dti,2)
+
+    tier1_text = "Being at a Tier 1 DTI signifies that you most likely have money left over for savings and monthly expenses, lenders view lower DTI ratios as favorable."
+    tier2_text = "A Tier 2 DTI shows that you are managing your debt adequately, but needs work. You may consider lowering your monthly debt as this would help in the event of unexpected expenses. Additionally, lenders may ask for additional eligibility factors such as co-borrowers or down payments."
+    tier3_text = "A Tier 3 DTI signifies that more than half your income goes to monthly expenses, leaving you with limited funds that restrict you from handling unexpected expenses and saving. Your borrowing options may be limited as since lenders tend to see this ratio as more of a liability."
+
     
     if dti <= dti_range[0]: 
-        return 1, dti
+        return 1, dti, tier1_text
     elif dti >= dti_range[0] and dti <= dti_range[1]:
-        return 2, dti
+        return 2, dti, tier2_text
     elif dti > dti_range[1]:
-        return 3, dti    
+        return 3, dti, tier3_text    
+

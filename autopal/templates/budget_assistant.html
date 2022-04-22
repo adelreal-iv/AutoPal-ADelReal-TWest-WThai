@@ -308,7 +308,20 @@
 					{{ form.submit(class="submit") }}<br><br>
 
 					<b>Debt to Income Summary</b>
-					<p>Your debt to income ratio is <b>{{ "{:,.2f}".format(dti) }}%</b>, leaving you at DTI <b>Tier {{ dti_tier }}</b> </p>
+					<p>Your debt to income ratio is <b>{{ "{:,.2f}".format(dti) }}%</b>, leaving you at DTI 
+						{%if tier1%}
+							<b class = "tier1">Tier {{ dti_tier }}</b> </p>
+						{% elif tier2 %}
+							<b class = "tier2">Tier {{ dti_tier }}</b> </p>
+						{% elif tier3%}
+							<b class = "tier3">Tier {{ dti_tier }}</b> </p>
+						{% else %}
+						<b>Tier {{ dti_tier }}</b> </p>
+						{% endif %}
+
+					
+					<ui class = 'dti_text'>{{ dti_text  }}</ul><br>
+
 				</form>	
 
 				

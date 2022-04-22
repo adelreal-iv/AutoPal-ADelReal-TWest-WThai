@@ -45,7 +45,7 @@
 					{{  form.hidden_tag()  }}
 					
 					{{  form.loan_amount.label  ( class = 'label')}}
-					
+					{% set f = form.loan_amount.process_data(0) %}
 					{% if form.loan_amount.errors %} 
 						{{  form.loan_amount ( class = 'textbox') }}<br>
 						<div class="isa_error">
@@ -58,7 +58,7 @@
                     {% endif %}
 
 					{{  form.interest.label  ( class = 'label')}}
-					
+					{% set f = form.interest.process_data(0) %}
 					{% if form.interest.errors %} 
 						{{  form.interest ( class = 'textbox') }}<br>
 						<div class="isa_error">
@@ -71,7 +71,7 @@
                     {% endif %}
 
 					{{  form.months.label  ( class = 'label')}}
-
+					{% set f = form.months.process_data(0) %}
 					{% if form.months.errors %} 
 						{{  form.months  ( class = 'textbox')}}<br>
 						<div class="isa_error">

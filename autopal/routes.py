@@ -72,6 +72,10 @@ def budget_assistant():
     form = BudgetAssistantForm()
     dti = 0
     dti_tier = 0
+    dti_text = " "
+    tier1 = False
+    tier2 = False
+    tier3 = False
 
     if form.validate_on_submit():
         monthly_income = (form.monthly_income1.data + form.monthly_income2.data) 
@@ -82,6 +86,14 @@ def budget_assistant():
 
         final_monthly_income = (monthly_income + (annual_income/12))
         final_monthly_debt = (monthly_savings + monthly_debt + (annual_debt/12))
-        dti, dti_tier = BudgetAssistant(final_monthly_income, final_monthly_debt)
+        dti, dti_tier, dti_text = BudgetAssistant(final_monthly_income, final_monthly_debt)
 
-    return render_template('budget_assistant.html', title='Budget Assistant', form=form, dti=dti, dti_tier=dti_tier)
+        if dti_tier == 1:
+            tier1 = True
+        elif dti_tier == 2:
+            tier2 = True
+        elif dti_tier == 3:
+            tier3 = True
+        
+
+    return render_template('budget_assistant.html', title='Budget Assistant', form=form, dti=dti, dti_tier=dti_tier, dti_text=dti_text, tier1=tier1, tier2=tier2, tier3=tier3)
