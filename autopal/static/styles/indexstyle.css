@@ -198,6 +198,34 @@ h2 {
 	box-sizing: border-box;
 }
 
+#leftcolumn_budgetassistant{
+    float: left;
+    height: auto;
+    width: 25%;
+    background-color: rgb(235, 235, 240);
+    min-height: 1700px;
+	border-right: 4px inset;
+	box-sizing: border-box;
+}
+
+#middlecolumn_budgetassistant{
+    float: left;
+    height: auto;
+    width: 50%;
+    background-color: rgb(245, 245, 245);
+    min-height: 1700px;
+}
+
+#rightcolumn_budgetassistant{
+    float: left;
+    height: auto;
+    width: 25%;
+    background-color: rgb(235, 235, 240);
+    min-height: 1700px;
+	border-left: 4px outset;
+	box-sizing: border-box;
+}
+
 #weatherAPI {
     height: 100px;
     width: 75%;
@@ -299,3 +327,24 @@ form {
     opacity: 0.6;
 }
 
+.textbox {
+	display: inline-block;
+	width: 20%;
+	-webkit-appearance: none;
+	-moz-appearance: textfield; /* Had to add this because im testing on firefox*/
+
+}
+.textboxpercent {
+	display: inline-block;
+	width: 19%;
+	-webkit-appearance: none;
+	-moz-appearance: textfield; /* Had to add this because im testing on firefox*/
+
+}
+
+.label{
+	display: inline-block;
+    clear: left;
+    width: 250px;
+    text-align: left;
+}

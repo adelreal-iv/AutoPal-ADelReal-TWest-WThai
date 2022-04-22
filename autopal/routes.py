@@ -1,9 +1,9 @@
 from flask import render_template, url_for, flash, redirect
 from autopal import app, db, bcrypt
-from autopal.forms import RegistrationForm, LoginForm, CalculateForm
+from autopal.forms import BudgetAssistantForm, RegistrationForm, LoginForm, CalculateForm
 from autopal.models import user
 from flask_login import login_user
-from autopal.utils import InterestCalculator, TaxAPI
+from autopal.utils import InterestCalculator, TaxAPI, BudgetAssistant
 
 @app.route('/') 
 def index():
@@ -66,3 +66,22 @@ def calculator():
         tax_rate=tax_rate, city=city, base_price=base_price,
         total_price=total_price
         )
+
+@app.route("/budgetassistant", methods=['GET', 'POST'])
+def budget_assistant():
+    form = BudgetAssistantForm()
+    dti = 0
+    dti_tier = 0
+
+    if form.validate_on_submit():
+        monthly_income = (form.monthly_income1.data + form.monthly_income2.data) 
+        annual_income = (form.annual_income1.data + form.annual_income2.data)
+        monthly_savings = (form.monthly_savings1.data + form.monthly_savings2.data + form.monthly_savings3.data)
+        monthly_debt = (form.monthly_debt1.data + form.monthly_debt2.data + form.monthly_debt3.data + form.monthly_debt4.data + form.monthly_debt5.data + form.monthly_debt6.data + form.monthly_debt7.data)
+        annual_debt = (form.annual_debt1.data + form.annual_debt2.data + form.annual_debt3.data + form.annual_debt4.data + form.annual_debt5.data)
+
+        final_monthly_income = (monthly_income + (annual_income/12))
+        final_monthly_debt = (monthly_savings + monthly_debt + (annual_debt/12))
+        dti, dti_tier = BudgetAssistant(final_monthly_income, final_monthly_debt)
+
+    return render_template('budget_assistant.html', title='Budget Assistant', form=form, dti=dti, dti_tier=dti_tier)

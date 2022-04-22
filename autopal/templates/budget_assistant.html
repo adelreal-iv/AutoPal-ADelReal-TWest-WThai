@@ -1,0 +1,340 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <!-- change title for each page!-->
+  <title>AutoPal Budget Assistant</title>
+
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/indexstyle.css') }}">
+
+</head>
+
+<body>
+	
+	<!--div for top banner-->
+	<div id="topbanner">
+		<div id="topbannertitle">
+			<img class="img" src="/static/images/AutoPal_Financial-logos_transparent.png">		
+			<h1 class="title">AutoPal Financial</h1>
+		</div>
+		<div id="topcenteredmenu">
+			<ul>
+				<li><a href="./">Home</a></li>
+				<li><a href="./registration">Register</a></li>
+				<li><a href="./login">Login</a></li>
+				<li><a href="./calculator">Calculator</a></li>
+				<li><a class="active" href="./budgetassistant">Budget Assistant</a></li>
+
+			</ul>	
+		</div>
+	</div>
+	<!--div for content-->
+	<div id="content">
+		<div id="leftcolumn_budgetassistant">
+				<div id="weatherAPI">
+					weather API
+				</div>
+				<div id="googlesearch">
+					google search
+				</div>
+		</div>
+		<div id="middlecolumn_budgetassistant">
+			<div id="calcAPP">
+				<div class="contentTitle">
+				<p>Budget Assistant</p>
+				</div>
+				<form name="form" action="" method="post">
+					{{  form.hidden_tag()  }}
+
+					<br><br><b>Monthly Income</b><br><br>
+
+					{{  form.monthly_income1.label ( class = 'label')  }}
+					{% set f = form.monthly_income1.process_data(0) %}
+					{% if form.monthly_income1.errors %} 
+						{{  form.monthly_income1 ( class = 'textbox') }}<br>
+						<div class="isa_error">
+							{% for error in form.monthly_income1.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        ${{ form.monthly_income1( class = 'textbox') }}<br><br>
+                    {% endif %}
+					
+
+					{{  form.monthly_income2.label ( class = 'label')  }}
+					{% set f = form.monthly_income2.process_data(0) %}
+					{% if form.monthly_income2.errors %} 
+						{{  form.monthly_income2 ( class = 'textbox')  }}<br>
+						<div class="isa_error">
+							{% for error in form.monthly_income2.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        ${{ form.monthly_income2( class = 'textbox') }}<br><br>
+                    {% endif %}
+
+					<br><br><b>Annual Income</b><br><br>
+
+					{{  form.annual_income1.label ( class = 'label') }}
+					{% set f = form.annual_income1.process_data(0) %}
+					{% if form.annual_income1.errors %} 
+						{{  form.annual_income1 ( class = 'textbox')  }}<br>
+						<div class="isa_error">
+							{% for error in form.annual_income1.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        ${{ form.annual_income1( class = 'textbox') }}<br><br>
+                    {% endif %}
+
+					{{  form.annual_income2.label ( class = 'label') }}
+					{% set f = form.annual_income2.process_data(0) %}
+					{% if form.annual_income2.errors %} 
+						{{  form.annual_income2 ( class = 'textbox')  }}<br>
+						<div class="isa_error">
+							{% for error in form.annual_income2.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        ${{ form.annual_income2 ( class = 'textbox') }}<br><br>
+                    {% endif %}
+
+					<br><br><b>Monthly Savings</b><br><br>
+
+					{{  form.monthly_savings1.label ( class = 'label') }}
+					{% set f = form.monthly_savings1.process_data(0) %}
+					{% if form.monthly_savings1.errors %} 
+						{{  form.monthly_savings1  ( class = 'textbox')}}<br>
+						<div class="isa_error">
+							{% for error in form.monthly_savings1.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        ${{ form.monthly_savings1 ( class = 'textbox') }}<br><br>
+                    {% endif %}
+
+					{{  form.monthly_savings2.label ( class = 'label') }}
+					{% set f = form.monthly_savings2.process_data(0) %}
+					{% if form.monthly_savings2.errors %} 
+						{{  form.monthly_savings2 ( class = 'textbox') }}<br>
+						<div class="isa_error">
+							{% for error in form.monthly_savings2.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        ${{ form.monthly_savings2( class = 'textbox') }}<br><br>
+                    {% endif %}
+
+					{{  form.monthly_savings3.label ( class = 'label') }}
+					{% set f = form.monthly_savings3.process_data(0) %}
+					{% if form.monthly_savings3.errors %} 
+						{{  form.monthly_savings3 ( class = 'textbox') }}<br>
+						<div class="isa_error">
+							{% for error in form.monthly_savings3.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        ${{ form.monthly_savings3 ( class = 'textbox')}}<br><br>
+                    {% endif %}
+
+					<br><br><b>Monthly Expenses</b><br><br>
+
+					{{  form.monthly_debt1.label ( class = 'label') }}
+					{% set f = form.monthly_debt1.process_data(0) %}
+					{% if form.monthly_debt1.errors %} 
+						{{  form.monthly_debt1 ( class = 'textbox') }}<br>
+						<div class="isa_error">
+							{% for error in form.monthly_debt1.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        ${{ form.monthly_debt1 ( class = 'textbox')}}<br><br>
+                    {% endif %}
+
+					{{  form.monthly_debt2.label ( class = 'label') }}
+					{% set f = form.monthly_debt2.process_data(0) %}
+					{% if form.monthly_debt2.errors %} 
+						{{  form.monthly_debt2 ( class = 'textbox') }}<br>
+						<div class="isa_error">
+							{% for error in form.monthly_debt2.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        ${{ form.monthly_debt2 ( class = 'textbox')}}<br><br>
+                    {% endif %}
+
+					{{  form.monthly_debt3.label ( class = 'label') }}
+					{% set f = form.monthly_debt3.process_data(0) %}
+					{% if form.monthly_debt3.errors %} 
+						{{  form.monthly_debt3 ( class = 'textbox') }}<br>
+						<div class="isa_error">
+							{% for error in form.monthly_debt3.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        ${{ form.monthly_debt3 ( class = 'textbox')}}<br><br>
+                    {% endif %}
+
+					{{  form.monthly_debt4.label ( class = 'label') }}
+					{% set f = form.monthly_debt4.process_data(0) %}
+					{% if form.monthly_debt4.errors %} 
+						{{  form.monthly_debt4 ( class = 'textbox') }}<br>
+						<div class="isa_error">
+							{% for error in form.monthly_debt4.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        ${{ form.monthly_debt4 ( class = 'textbox')}}<br><br>
+                    {% endif %}
+
+					{{  form.monthly_debt5.label ( class = 'label') }}
+					{% set f = form.monthly_debt5.process_data(0) %}
+					{% if form.monthly_debt5.errors %} 
+						{{  form.monthly_debt5 ( class = 'textbox') }}<br>
+						<div class="isa_error">
+							{% for error in form.monthly_debt5.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        ${{ form.monthly_debt5( class = 'textbox') }}<br><br>
+                    {% endif %}
+
+					{{  form.monthly_debt6.label ( class = 'label') }}
+					{% set f = form.monthly_debt6.process_data(0) %}
+					{% if form.monthly_debt6.errors %} 
+						{{  form.monthly_debt6 ( class = 'textbox') }}<br>
+						<div class="isa_error">
+							{% for error in form.monthly_debt6.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        ${{ form.monthly_debt6 ( class = 'textbox')}}<br><br>
+                    {% endif %}
+
+					{{  form.monthly_debt7.label ( class = 'label') }}
+					{% set f = form.monthly_debt7.process_data(0) %}
+					{% if form.monthly_debt7.errors %} 
+						{{  form.monthly_debt7 ( class = 'textbox') }}<br>
+						<div class="isa_error">
+							{% for error in form.monthly_debt7.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        ${{ form.monthly_debt7 ( class = 'textbox')}}<br><br>
+                    {% endif %}
+
+					<br><br><b>Annual Expenses</b><br><br>
+
+					{{  form.annual_debt1.label ( class = 'label') }}
+					{% set f = form.annual_debt1.process_data(0) %}
+					{% if form.annual_debt1.errors %} 
+						{{  form.annual_debt1  ( class = 'textbox')}}<br>
+						<div class="isa_error">
+							{% for error in form.annual_debt1.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        ${{ form.annual_debt1 ( class = 'textbox')}}<br><br>
+                    {% endif %}
+
+					{{  form.annual_debt2.label ( class = 'label') }}
+					{% set f = form.annual_debt2.process_data(0) %}
+					{% if form.annual_debt2.errors %} 
+						{{  form.annual_debt2 ( class = 'textbox') }}<br>
+						<div class="isa_error">
+							{% for error in form.annual_debt2.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        ${{ form.annual_debt2( class = 'textbox') }}<br><br>
+                    {% endif %}
+
+					{{  form.annual_debt3.label ( class = 'label') }}
+					{% set f = form.annual_debt3.process_data(0) %}
+					{% if form.annual_debt3.errors %} 
+						{{  form.annual_debt3 ( class = 'textbox') }}<br>
+						<div class="isa_error">
+							{% for error in form.annual_debt3.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        ${{ form.annual_debt3 ( class = 'textbox')}}<br><br>
+                    {% endif %}
+
+					{{  form.annual_debt4.label ( class = 'label') }}
+					{% set f = form.annual_debt4.process_data(0) %}
+					{% if form.annual_debt4.errors %} 
+						{{  form.annual_debt4 ( class = 'textbox') }}<br>
+						<div class="isa_error">
+							{% for error in form.annual_debt4.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        ${{ form.annual_debt4 ( class = 'textbox')}}<br><br>
+                    {% endif %}
+
+					{{  form.annual_debt5.label ( class = 'label') }}
+					{% set f = form.annual_debt5.process_data(0) %}
+					{% if form.annual_debt5.errors %} 
+						{{  form.annual_debt5 ( class = 'textbox') }}<br>
+						<div class="isa_error">
+							{% for error in form.annual_debt5.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        ${{ form.annual_debt5( class = 'textbox') }}<br><br>
+                    {% endif %}
+
+	  
+					{{ form.submit(class="submit") }}<br><br>
+
+					<b>Debt to Income Summary</b>
+					<p>Your debt to income ratio is <b>{{ "{:,.2f}".format(dti) }}%</b>, leaving you at DTI <b>Tier {{ dti_tier }}</b> </p>
+				</form>	
+
+				
+			</div>
+		</div>
+		<div id="rightcolumn_budgetassistant">
+			<div id="newsAPI">
+				news API	
+			</div>
+		</div>	
+	</div>
+
+	<!-- div for bottom banner-->
+	<div id="bottombanner">
+		<div id="bottombannertitle">
+			<img class="img" src="/static/images/AutoPal_Financial-logos_transparent.png">		
+			<h2 class="title">AutoPal Financial</h1>
+		</div>
+		<div id="botcenteredmenu">
+			<ul>
+				<li><a href="./">Home</a></li>
+				<li><a href="./registration">Register</a></li>
+				<li><a href="./login">Login</a></li>
+				<li><a class="active" href="./calculator">Calculator</a></li>
+			</ul>	
+		</div>
+	</div>
+ </body>
+</html>

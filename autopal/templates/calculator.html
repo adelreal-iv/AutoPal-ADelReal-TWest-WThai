@@ -4,11 +4,8 @@
 
   <!-- change title for each page!-->
   <title>AutoPal Calculator</title>
-  <meta name="description" content="San Francisco 101 - Home">
-  <meta name="author" content="Weston">
 
   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/indexstyle.css') }}">
- <!--Weston Thai, Thomas West-->
 
 </head>
 
@@ -25,6 +22,7 @@
 				<li><a href="./registration">Register</a></li>
 				<li><a href="./login">Login</a></li>
 				<li><a class="active" href="./calculator">Calculator</a></li>
+				<li><a href="./budgetassistant">Budget Assistant</a></li>
 			</ul>	
 		</div>
 	</div>
@@ -46,56 +44,56 @@
 				<form name="form" action="" method="post">
 					{{  form.hidden_tag()  }}
 					
-					{{  form.loan_amount.label  }}<br>
+					{{  form.loan_amount.label  ( class = 'label')}}
 					
 					{% if form.loan_amount.errors %} 
-						{{  form.loan_amount  }}<br>
+						{{  form.loan_amount ( class = 'textbox') }}<br>
 						<div class="isa_error">
 							{% for error in form.loan_amount.errors %}
 								<span>{{ error }} </span><br>
 							{% endfor %}
 						</div>
 					{% else %}
-                        {{ form.loan_amount }}<br><br>
+                        ${{ form.loan_amount ( class = 'textbox')}}<br><br>
                     {% endif %}
 
-					{{  form.interest.label  }}<br>
+					{{  form.interest.label  ( class = 'label')}}
 					
 					{% if form.interest.errors %} 
-						{{  form.interest  }}<br>
+						{{  form.interest ( class = 'textbox') }}<br>
 						<div class="isa_error">
 							{% for error in form.interest.errors %}
 								<span>{{ error }} </span><br>
 							{% endfor %}
 						</div>
 					{% else %}
-                        {{ form.interest }}<br><br>
+                        %{{ form.interest( class = 'textboxpercent')}}<br><br>
                     {% endif %}
 
-					{{  form.months.label  }}<br>
+					{{  form.months.label  ( class = 'label')}}
 
 					{% if form.months.errors %} 
-						{{  form.months  }}<br>
+						{{  form.months  ( class = 'textbox')}}<br>
 						<div class="isa_error">
 							{% for error in form.months.errors %}
 								<span>{{ error }} </span><br>
 							{% endfor %}
 						</div>
 					{% else %}
-                        {{ form.months }}<br><br>
+                        {{ form.months ( class = 'textbox')}}<br><br>
                     {% endif %}
 
-					{{  form.city.label  }}<br>
+					{{  form.city.label  ( class = 'label')}}
 
 					{% if form.city.errors %} 
-						{{  form.city  }}<br>
+						{{  form.city  ( class = 'textbox')}}<br>
 						<div class="isa_error">
 							{% for error in form.city.errors %}
 								<span>{{ error }} </span><br>
 							{% endfor %}
 						</div>
 					{% else %}
-                        {{ form.city }}<br><br>
+                        {{ form.city ( class = 'textbox')}}<br><br>
                     {% endif %}
 					
 	  

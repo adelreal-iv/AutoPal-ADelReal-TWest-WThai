@@ -138,4 +138,30 @@ def TaxAPI(city):
 
 #    print("Your tax rate will be: %.2f%%\n"% usertax)
 
+def BudgetAssistant(monthly_income,monthly_debt):
+    dti = 0 
+    dti_tier = 0   
+    dti_range = [35.99, 49.99]
+
+    monthly_income = round(float(monthly_income),2)
+    monthly_debt = round(float(monthly_debt), 2)
     
+    if monthly_income != 0 or monthly_debt != 0:
+        dti_tier, dti = (calculate_dti(monthly_income, monthly_debt, dti_range))
+
+    return dti, dti_tier
+
+
+def calculate_dti(monthly_income, monthly_debt, dti_range):
+    dti = 0
+    monthly_income = monthly_income 
+    dti = monthly_debt / monthly_income
+    dti = dti * 100
+    dti = round(dti,2)
+    
+    if dti <= dti_range[0]: 
+        return 1, dti
+    elif dti >= dti_range[0] and dti <= dti_range[1]:
+        return 2, dti
+    elif dti > dti_range[1]:
+        return 3, dti    
