@@ -31,7 +31,12 @@
 	<div id="content">
 		<div id="leftcolumn">
 				<div id="weatherAPI">
-					weather API
+					<p id="city">{{ weatherinfo[5] }}</p>
+					<hr>
+					<p id="temp">{{ weatherinfo[0] }}&#176;F</p>
+					<p id="feels">feels like {{ weatherinfo[1] }}&#176;F</p>
+					<p id="weather">Currently: {{ weatherinfo[4] }}</p>
+					<p id="extra">Humidy: {{ weatherinfo[2] }} &emsp; Dewpoint: {{ weatherinfo[3] }}</p>
 				</div>
 				<div id="googlesearch">
 					google search
@@ -58,7 +63,16 @@
 		</div>
 		<div id="rightcolumn">
 			<div id="newsAPI">
-				news API	
+				<p id="newstitle">Recent News</p>
+				<hr>
+				<p id="newslink"><a href="{{ newsinfo[2] }}">{{ newsinfo[1] }}</a></p>
+				<p id="newsextra">by {{ newsinfo[0] }} on {{ newsinfo[3] }}</p>
+				
+				<p id="newslink"><a href="{{ newsinfo[6] }}">{{ newsinfo[5] }}</a></p>
+				<p id="newsextra">by {{ newsinfo[4] }} on {{ newsinfo[7] }}</p>
+				
+				<p id="newslink"><a href="{{ newsinfo[10] }}">{{ newsinfo[9] }}</a></p>
+				<p id="newsextra">by {{ newsinfo[8] }} on {{ newsinfo[11] }}</p>
 			</div>
 		</div>	
 	</div>

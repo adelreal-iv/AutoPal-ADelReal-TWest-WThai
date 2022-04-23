@@ -1,5 +1,5 @@
-import requests
-import json
+import requests, urllib.request, json
+from datetime import *
 
 def InterestCalculator(LoanAmount, term, interest, Last_Payment,tax):
 
@@ -172,3 +172,71 @@ def calculate_dti(monthly_income, monthly_debt, dti_range):
     elif dti > dti_range[1]:
         return 3, dti, tier3_text    
 
+def weatherAPI(ip_address):
+    apikey="c756c6472ea0e54b899ec03b5f9eacd9"
+    #checks if ip request worked. if not it uses a random LA ip address
+    if ip_address == '127.0.0.1':
+        ip_address = '161.149.146.201'
+
+    #gets users lat and lon from ip_address    
+    response = requests.get("http://ip-api.com/json/{}".format(ip_address))
+    js = response.json()
+    lat = str(js['lat'])
+    lon = str(js['lon'])
+    city = str(js['city'])
+
+    #!!!get weather info!!!
+    url='https://api.openweathermap.org/data/2.5/onecall?lat='+lat+'&lon='+lon+'&exclude=minutely,hourly,daily,alerts&units=imperial&appid='+apikey
+    print(url)
+    connection = urllib.request.urlopen(url) 
+    responseString = connection.read().decode() 
+    data = json.loads(responseString)
+    temp=str(data['current']['temp'])
+    feelslike=str(data['current']['feels_like'])
+    humidity=str(data['current']['humidity'])
+    dewpoint=str(data['current']['dew_point'])
+    weather=data['current']['weather'][0]['description']
+
+    return [temp, feelslike, humidity, dewpoint, weather, city]
+
+def newsAPI():
+    apikey='cf0cee30e5234c4990e537faf83fd4b6'
+
+    today = date.today()    #gets todays date
+    yesterday = today - timedelta(days = 1) #calculates yesterdays date from 'today'
+    topic='loans' #topic to search for (maybe change to banking or auto loans?)
+
+    #below code gets API data and sets it to a json called 'data'
+    url= 'https://newsapi.org/v2/everything?q='+topic+'&from='+str(yesterday)+'to='+str(today)+'&sortBy=popularity&pageSize=3&apiKey='+apikey
+    connection = urllib.request.urlopen(url)
+    responseString = connection.read().decode()
+    data = json.loads(responseString)
+
+    #stores data from json into their own variables.
+        #maybe change this part after we implimnet it into flask. maybe during the for loop we can send variable to the website? not to sure how to do this yet
+    a=[] #list for saving data from JSON
+    for i in data['articles']:
+        a.append(i['author'])
+        a.append(i['title'])
+        a.append(i['url'])
+        a.append(i['publishedAt'])
+
+    author1=a[0]
+    title1=a[1]
+    url1=a[2]
+    publishdate1=a[3]
+    publishdate1=publishdate1[:10]
+
+    author2=a[4]
+    title2=a[5]
+    url2=a[6]
+    publishdate2=a[7]
+    publishdate2=publishdate2[:10]
+
+    author3=a[8]
+    title3=a[9]
+    url3=a[10]
+    publishdate3=a[11]
+    publishdate3=publishdate3[:10]
+
+    return [author1, title1, url1, publishdate1, author2, title2, url2, publishdate2, author3, title3, url3, publishdate3]

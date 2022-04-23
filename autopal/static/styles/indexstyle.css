@@ -227,17 +227,82 @@ h2 {
 }
 
 #weatherAPI {
-    height: 100px;
+    height: auto;
     width: 75%;
+	min-width: 200px;
     background-color: white;
     margin: 10px auto 10px auto;
+	text-align: center;
+	border-radius: 40px;
+}
+
+#city {
+	color:rgb(156, 187, 235);
+	font-size: 150%;
+	font-weight: bold;
+	margin: 10px auto 10px auto;
+	padding-top: 10px;
+}
+
+#temp {
+	color:rgb(84, 101, 128);
+	font-size: 200%;
+	font-weight: bold;
+	margin: 40px auto 5px auto;
+}
+
+#feels {
+	color:rgb(101, 123, 155);
+	font-size: 80%;
+	margin: 0px auto 30px auto;
+}
+
+#weather {
+	color: rgb(110, 110, 136);
+	font-size: 130%;
+	margin: 10px auto 5px auto;
+}
+
+#extra {
+	color:rgb(101, 123, 155);
+	font-size: 80%;
+	margin: 0px auto 10px auto;
+	padding-bottom: 15px;
+}
+
+hr {
+	height: 2px;
+	background-color: rgb(101, 123, 155);
+	border: none;
 }
 
 #newsAPI {
-    height: 200px;
+    height: auto;
     width: 75%;
     background-color: white;
     margin: 10px auto 10px auto;
+	border-radius: 40px;
+}
+
+#newstitle {
+	color:rgb(156, 187, 235);
+	font-size: 150%;
+	font-weight: bold;
+	margin: 10px auto 10px auto;
+	padding-top: 10px;
+	text-align: center;
+}
+
+#newslink {
+	font-size: 140%;
+	margin: 10px 10px 0px 10px;
+}
+
+#newsextra {
+	color:rgb(101, 123, 155);
+	font-size: 80%;
+	margin: 0px 10px 0px 10px;
+	padding-bottom: 40px;
 }
 
 #googlesearch {

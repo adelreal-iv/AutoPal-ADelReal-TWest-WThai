@@ -1,20 +1,26 @@
-from flask import render_template, url_for, flash, redirect
+from flask import render_template, url_for, flash, redirect, request
 from autopal import app, db, bcrypt
 from autopal.forms import BudgetAssistantForm, RegistrationForm, LoginForm, CalculateForm
 from autopal.models import user
 from flask_login import login_user
-from autopal.utils import InterestCalculator, TaxAPI, BudgetAssistant
+from autopal.utils import InterestCalculator, TaxAPI, BudgetAssistant, weatherAPI, newsAPI
 
 @app.route('/') 
 def index():
-    return render_template('index.html')
+    ip_address = request.environ.get('HTTP_X_FORWARDED_FOR', request.remote_addr)
+    weatherinfo = weatherAPI(ip_address)
+    newsinfo = newsAPI()
+    return render_template('index.html', weatherinfo=weatherinfo, newsinfo=newsinfo)
 
-@app.route('/test') 
+@app.route('/test')
 def test():
     return render_template('test.html')    
 
 @app.route("/registration", methods=['GET', 'POST'])
 def register():
+    ip_address = request.environ.get('HTTP_X_FORWARDED_FOR', request.remote_addr)
+    weatherinfo = weatherAPI(ip_address)
+    newsinfo = newsAPI()
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
@@ -23,10 +29,13 @@ def register():
         db.session.commit()
         flash(f'Account created for {form.username.data}!', 'isa_success')
         return redirect(url_for('index'))                     
-    return render_template('registration.html', title='Register', form=form)
+    return render_template('registration.html', title='Register', form=form, weatherinfo=weatherinfo, newsinfo=newsinfo)
 
 @app.route("/login")
 def login():
+    ip_address = request.environ.get('HTTP_X_FORWARDED_FOR', request.remote_addr)
+    weatherinfo = weatherAPI(ip_address)
+    newsinfo = newsAPI()
     form = LoginForm()  
     if form.validate_on_submit():
         session = user.query.filter_by(email=form.username.data).first()
@@ -35,10 +44,13 @@ def login():
             return redirect(url_for('home))'))
         else:
             flash("login Unsuccessful. Please check email and password")
-    return render_template('login.html', title='Login', form=form)
+    return render_template('login.html', title='Login', form=form, weatherinfo=weatherinfo, newsinfo=newsinfo)
 
 @app.route("/calculator", methods=['GET', 'POST'])
 def calculator():
+    ip_address = request.environ.get('HTTP_X_FORWARDED_FOR', request.remote_addr)
+    weatherinfo = weatherAPI(ip_address)
+    newsinfo = newsAPI()
     form = CalculateForm()
     base_price = 0
     monthly_payment = 0 
@@ -64,11 +76,14 @@ def calculator():
         interest_charge=interest_charge, final_amount=final_amount,
         last_payment=last_payment, total_payments=total_payments,
         tax_rate=tax_rate, city=city, base_price=base_price,
-        total_price=total_price
+        total_price=total_price, weatherinfo=weatherinfo, newsinfo=newsinfo
         )
 
 @app.route("/budgetassistant", methods=['GET', 'POST'])
 def budget_assistant():
+    ip_address = request.environ.get('HTTP_X_FORWARDED_FOR', request.remote_addr)
+    weatherinfo = weatherAPI(ip_address)
+    newsinfo = newsAPI()
     form = BudgetAssistantForm()
     dti = 0
     dti_tier = 0
@@ -96,4 +111,4 @@ def budget_assistant():
             tier3 = True
         
 
-    return render_template('budget_assistant.html', title='Budget Assistant', form=form, dti=dti, dti_tier=dti_tier, dti_text=dti_text, tier1=tier1, tier2=tier2, tier3=tier3)
+    return render_template('budget_assistant.html', title='Budget Assistant', form=form, dti=dti, dti_tier=dti_tier, dti_text=dti_text, tier1=tier1, tier2=tier2, tier3=tier3, weatherinfo=weatherinfo, newsinfo=newsinfo)
