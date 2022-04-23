@@ -47,15 +47,55 @@
 			</div>
 			<div id="registration">
 			<!--maybe use flask based login system instead of this? need to research if applicable-->
+			<div class="contentTitleFlash">
+				{% with messages = get_flashed_messages(with_categories=true) %}
+					{% if messages %}
+				  		{% for category, message in messages %}
+							<div class="{{ category }}">
+					  			{{ message }}
+							</div>
+				  		{% endfor %}
+					{% endif %}
+			  	{% endwith %}
+			</div>
 				<form name="form" action="" method="post">
-					<label for="email">Email:</label><br>
-					<input type="text" id="email" name="email" required><br><br>
+					{{  form.hidden_tag()  }}
 					
-					<label for="password">Password:</label><br>
-					<input type="password" id="password" name="password" required><br><br>
+					{{  form.email.label  }}<br>
+					
+					{% if form.email.errors %} 
+						{{  form.email  }}<br>
+						<div class="isa_error">
+							{% for error in form.email.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        {{ form.email }}<br><br>
+                    {% endif %}
+
+					
+
+					{{  form.password.label  }}<br>
+					
+					{% if form.password.errors %} 
+						{{  form.password  }}<br>
+						<div class="isa_error">
+							{% for error in form.password.errors %}
+								<span>{{ error }} </span><br>
+							{% endfor %}
+						</div>
+					{% else %}
+                        {{ form.password }}<br><br>
+                    {% endif %}
+
 	  
-					<input class="submit" type="submit" value="Submit">
-				  </form>
+					{{ form.submit(class="submit") }}<br>
+
+					<small class="grayout">
+						Need to make an account? <a href="{{ url_for('register') }}">Register here</a>
+					</small>
+				</form>
 			</div>	
 		</div>
 		<div id="rightcolumn">
