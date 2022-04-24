@@ -19,12 +19,12 @@ class RegistrationForm(FlaskForm):
         def validate_username(self, username):
                 newuser = user.query.filter_by(username=username.data).first()
                 if newuser:
-                        raise ValidationError('That username is taken please choose a different one.')          #validates if username is taken already in the database
+                        raise ValidationError('That username is taken, please choose a different one.')          #validates if username is taken already in the database
 
         def validate_email(self, email):
                 newemail = user.query.filter_by(email=email.data).first()
                 if newemail:
-                        raise ValidationError('That email is taken please choose a differnet one.')          #validates if email is taken already in the database
+                        raise ValidationError('That email is taken, please choose a different one.')          #validates if email is taken already in the database
 
 class LoginForm(FlaskForm):
         email = StringField('Email',                                                    #Validates email for signing in as opposed to username
