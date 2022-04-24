@@ -337,7 +337,7 @@ hr {
     margin: 10px auto 10px auto;
 }
 .homePage {
-    height: 500px;
+    min-height: 500px;
     width: 75%;
     margin: 10px auto 10px auto;
 	border: 3px solid;
@@ -505,4 +505,46 @@ form {
 	margin-right: auto;
   	width: 30%;
 	text-align: left;
+}
+@media only screen and (min-width:150px) and (max-width: 800px) {
+	.leftcolumn{
+		float: left;
+		height: auto;
+		width: 25%;
+		background-color: rgb(235, 235, 240);
+		min-height: 1200px;
+		border-right: 4px inset;
+		border-style: groove;
+		border: 3px solid;
+		border-color: grey;
+		box-sizing: border-box;
+	}
+	
+	.middlecolumn{
+		float: left;
+		height: auto;
+		width: 50%;
+		min-height: 1200px;
+		background-image: url('/static/images/Background-LA2.jpg');
+		background-position: center;
+		background-size: cover;
+		border-top: 3px solid;
+		border-color: grey;
+	
+	
+		
+	}
+	
+	.rightcolumn{
+		float: left;
+		height: auto;
+		width: 25%;
+		background-color: rgb(235, 235, 240);
+		min-height: 1200px;
+		border-left: 4px outset;
+		border-style: groove;
+		border: 3px solid;
+		border-color: grey;
+		box-sizing: border-box;
+	}
 }
