@@ -27,23 +27,24 @@ def register():
         newuser = user(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(newuser)
         db.session.commit()
-        flash(f'Account created for {form.username.data}!', 'isa_success')
+        flash(f'Account created for {form.email.data}!', 'isa_success')
         return redirect(url_for('index'))                     
     return render_template('registration.html', title='Register', form=form, weatherinfo=weatherinfo, newsinfo=newsinfo)
 
-@app.route("/login")
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     ip_address = request.environ.get('HTTP_X_FORWARDED_FOR', request.remote_addr)
     weatherinfo = weatherAPI(ip_address)
     newsinfo = newsAPI()
     form = LoginForm()  
     if form.validate_on_submit():
-        session = user.query.filter_by(email=form.username.data).first()
-        if session and bcrypt.check_passwod_has(user.password, form.password.data):
+        session = user.query.filter_by(email=form.email.data).first()
+        if session and bcrypt.check_password_hash(session.password, form.password.data):
             login_user(session, remember=form.remember.data)
-            return redirect(url_for('home))'))
+            flash(f"You have logged in as {form.email.data}!", 'isa_success')
+            return redirect(url_for('index'))
         else:
-            flash("login Unsuccessful. Please check email and password")
+            flash('Login Unsuccessful. Please check email and password', 'isa_error')
     return render_template('login.html', title='Login', form=form, weatherinfo=weatherinfo, newsinfo=newsinfo)
 
 @app.route("/calculator", methods=['GET', 'POST'])
