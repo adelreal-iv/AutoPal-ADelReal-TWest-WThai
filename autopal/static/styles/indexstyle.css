@@ -177,6 +177,9 @@ h2 {
     background-color: rgb(235, 235, 240);
     min-height: 750px;
 	border-right: 4px inset;
+	border-style: groove;
+	border: 3px solid;
+	border-color: grey;
 	box-sizing: border-box;
 }
 
@@ -184,8 +187,15 @@ h2 {
     float: left;
     height: auto;
     width: 50%;
-    background-color: rgb(245, 245, 245);
     min-height: 750px;
+	background-image: url('/static/images/Background-LA2.jpg');
+	background-position: center;
+	background-size: cover;
+	border-top: 3px solid;
+	border-color: grey;
+
+
+	
 }
 
 #rightcolumn{
@@ -195,6 +205,9 @@ h2 {
     background-color: rgb(235, 235, 240);
     min-height: 750px;
 	border-left: 4px outset;
+	border-style: groove;
+	border: 3px solid;
+	border-color: grey;
 	box-sizing: border-box;
 }
 
@@ -205,6 +218,8 @@ h2 {
     background-color: rgb(235, 235, 240);
     min-height: 1700px;
 	border-right: 4px inset;
+	border: 3px solid;
+	border-style: groove;
 	box-sizing: border-box;
 }
 
@@ -212,7 +227,9 @@ h2 {
     float: left;
     height: auto;
     width: 50%;
-    background-color: rgb(245, 245, 245);
+	background-image: url('/static/images/Background-LA2.jpg');
+	background-position: center;
+	background-size: cover;
     min-height: 1700px;
 }
 
@@ -223,6 +240,8 @@ h2 {
     background-color: rgb(235, 235, 240);
     min-height: 1700px;
 	border-left: 4px outset;
+	border: 3px solid;
+	border-style: groove;
 	box-sizing: border-box;
 }
 
@@ -317,6 +336,14 @@ hr {
     width: 75%;
     margin: 10px auto 10px auto;
 }
+.homePage {
+    height: 200px;
+    width: 75%;
+    margin: 10px auto 10px auto;
+	border: 3px solid;
+	border-style: groove;
+	background-color: rgb(245, 245, 245);
+}
 
 input {
     border: 1.5px solid;
@@ -341,6 +368,7 @@ form {
 	border: 5px ridge;
 	border-radius: 5px;
 	padding-top: 10px;
+	background-color: rgb(245, 245, 245);
 }
 
 #registration {
@@ -348,9 +376,15 @@ form {
 }
 
 .contentTitle {
-	margin-top: 50px;
 	text-align: center;
-	font-weight: bold;
+	margin: 20px auto 10px auto;
+	width: 50%;
+	border: 3px solid;
+	padding: 1px;
+	background-color: rgb(245, 245, 245);
+	border-style: groove;
+
+
 }
 
 .contentTitleFlash {
