@@ -6,6 +6,7 @@
   <title>AutoPal Financial - Calculator</title>
 
   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/indexstyle.css') }}">
+  <script async src="https://cse.google.com/cse.js?cx=b95d94f88c50da04f"></script>
 
 </head>
 
@@ -38,8 +39,12 @@
 					<p id="extra">Humidy: {{ weatherinfo[2] }} &emsp; Dewpoint: {{ weatherinfo[3] }}</p>
 				</div>
 				<div id="googlesearch">
-					google search
+					<div class="gcse-search"></div>
 				</div>
+
+			<ul class = "weatherAPI"><li>The weather API takes information from the user and then calculates their rough location. It then calls an API to get the local weather information using found location.</ul>
+			<ul class = "weatherAPI"><li>The Google Search API allows users to search for just about anything using Google's Programmable Search.</ul>
+
 		</div>
 		<div id="middlecolumn">
 			<div id="calcAPP">
@@ -104,15 +109,16 @@
 	  
 					{{ form.submit(class="submit") }}<br><br>
 					<b>Amortization Summary</b>
-					<p>Base Price: ${{ "{:,.2f}".format(base_price) }}</p>
-					<p>Tax Rate ({{ city }}): {{ tax_rate }}%</p>
-					<p>Total Price and Finance Amount: ${{ "{:,.2f}".format(total_price) }}</p>
-					<p>Number of Payments: {{ total_payments }}</p>
-					<p>Monthly Payments: ${{ "{:,.2f}".format(monthly_payment) }}</p>
-					<p>Final Payment: ${{ "{:,.2f}".format(last_payment) }}</p>
-					<p>Finance Charge: ${{ "{:,.2f}".format(interest_charge) }}</p>
-					<p>Final Amount Paid: ${{ "{:,.2f}".format(final_amount) }}</p>
-					
+					<div class = "amortizationText">
+						<p>Base Price: ${{ "{:,.2f}".format(base_price) }}</p>
+						<p>Tax Rate ({{ city }}): {{ tax_rate }}%</p>
+						<p>Total Finance Amount: ${{ "{:,.2f}".format(total_price) }}</p>
+						<p>Number of Payments: {{ total_payments }}</p>
+						<p>Monthly Payments: ${{ "{:,.2f}".format(monthly_payment) }}</p>
+						<p>Final Payment: ${{ "{:,.2f}".format(last_payment) }}</p>
+						<p>Finance Charge: ${{ "{:,.2f}".format(interest_charge) }}</p>
+						<p>Final Amount Paid: ${{ "{:,.2f}".format(final_amount) }}</p>
+					</div>
 				</form>	
 			</div>
 		</div>
@@ -129,6 +135,8 @@
 				<p id="newslink"><a href="{{ newsinfo[10] }}">{{ newsinfo[9] }}</a></p>
 				<p id="newsextra">by {{ newsinfo[8] }} on {{ newsinfo[11] }}</p>	
 			</div>
+			<ul class = "newsAPI"><li>The news API searches the most recent articles across a few common news websites and returns three articles that have to do with anything relating to finance.</li></ul>
+
 		</div>	
 	</div>
 
