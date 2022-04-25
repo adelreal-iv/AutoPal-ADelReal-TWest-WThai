@@ -24,8 +24,8 @@ def register():
     ip_address = request.environ.get('HTTP_X_FORWARDED_FOR', request.remote_addr)
     weatherinfo = weatherAPI(ip_address)
     newsinfo = newsAPI()
-    EMAIL_ADDRESS = 'autopalasu@gmail.com'#os.environ.get('EMAIL_USER') #Please note that this wont work unless you manually enter these fields or set os vars
-    EMAIL_PASSWORD = 'Capstone'#os.environ.get('EMAIL_PASS')    
+    EMAIL_ADDRESS = os.environ.get('EMAIL_USER') #Please note that this wont work unless you manually enter these fields or set os vars
+    EMAIL_PASSWORD = os.environ.get('EMAIL_PASS')    
     form = RegistrationForm()
 
     if form.validate_on_submit():
