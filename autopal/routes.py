@@ -4,6 +4,9 @@ from autopal.forms import BudgetAssistantForm, RegistrationForm, LoginForm, Calc
 from autopal.models import user
 from flask_login import login_user
 from autopal.utils import InterestCalculator, TaxAPI, BudgetAssistant, weatherAPI, newsAPI
+from flask_mail import Mail, Message
+import smtplib
+import os
 
 @app.route('/') 
 def index():
@@ -21,8 +24,20 @@ def register():
     ip_address = request.environ.get('HTTP_X_FORWARDED_FOR', request.remote_addr)
     weatherinfo = weatherAPI(ip_address)
     newsinfo = newsAPI()
+    EMAIL_ADDRESS = 'autopalasu@gmail.com'#os.environ.get('EMAIL_USER')
+    EMAIL_PASSWORD = 'Capstone'#os.environ.get('EMAIL_PASS')    
     form = RegistrationForm()
+
     if form.validate_on_submit():
+        server = smtplib.SMTP_SSL('smtp.googlemail.com', 465)
+        server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+
+        subject = 'Registration Successful'
+        body = 'Hello! This email was sent to inform you that you have successfully registered with AutoPal!'
+        msg = f'Subject: {subject}\n\n{body}'
+
+        server.sendmail(EMAIL_ADDRESS, form.email.data, msg)
+
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         newuser = user(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(newuser)
